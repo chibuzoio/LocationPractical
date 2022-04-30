@@ -23,7 +23,7 @@ class LocationTracker(private val mContext: Context) : Service(), LocationListen
     var checkGPS = false
     var checkNetwork = false
     var canGetLocation = false
-    var loc: Location? = null
+    var locationObject: Location? = null
 
     /**
      * Method use to get location
@@ -86,12 +86,12 @@ class LocationTracker(private val mContext: Context) : Service(), LocationListen
                     )
 
                     if (locationManager != null) {
-                        loc = locationManager!!
+                        locationObject = locationManager!!
                             .getLastKnownLocation(LocationManager.GPS_PROVIDER)
 
-                        if (loc != null) {
-                            latitude = loc!!.latitude
-                            longitude = loc!!.longitude
+                        if (locationObject != null) {
+                            latitude = locationObject!!.latitude
+                            longitude = locationObject!!.longitude
                         }
                     }
                 }
@@ -120,13 +120,13 @@ class LocationTracker(private val mContext: Context) : Service(), LocationListen
                     )
 
                     if (locationManager != null) {
-                        loc = locationManager!!
+                        locationObject = locationManager!!
                             .getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
                     }
 
-                    if (loc != null) {
-                        latitude = loc!!.latitude
-                        longitude = loc!!.longitude
+                    if (locationObject != null) {
+                        latitude = locationObject!!.latitude
+                        longitude = locationObject!!.longitude
                     }
                 }
             }
@@ -134,20 +134,20 @@ class LocationTracker(private val mContext: Context) : Service(), LocationListen
             e.printStackTrace()
         }
 
-        return loc
+        return locationObject
     }
 
     fun getLongitude(): Double {
-        if (loc != null) {
-            longitude = loc!!.longitude
+        if (locationObject != null) {
+            longitude = locationObject!!.longitude
         }
 
         return longitude
     }
 
     fun getLatitude(): Double {
-        if (loc != null) {
-            latitude = loc!!.latitude
+        if (locationObject != null) {
+            latitude = locationObject!!.latitude
         }
 
         return latitude
@@ -214,8 +214,8 @@ class LocationTracker(private val mContext: Context) : Service(), LocationListen
 
     //Runs when location is changed
     override fun onLocationChanged(location: Location) {
-        loc!!.latitude = location.latitude
-        loc!!.longitude = location.longitude
+        locationObject!!.latitude = location.latitude
+        locationObject!!.longitude = location.longitude
     }
 
     override fun onStatusChanged(s: String, i: Int, bundle: Bundle) {}

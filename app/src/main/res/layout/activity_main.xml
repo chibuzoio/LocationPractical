@@ -11,20 +11,20 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:padding="8dp"
-        android:hint="Long"
+        android:hint="Lati"
         android:gravity="center"
-        android:id="@+id/longi"
+        android:id="@+id/latti"
         android:focusedByDefault="false"
         android:layout_marginTop="8dp"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
+        android:layout_below="@id/latti"
         android:padding="8dp"
-        android:hint="Lati"
-        android:layout_below="@id/longi"
+        android:hint="Long"
         android:gravity="center"
-        android:id="@+id/latti"
+        android:id="@+id/longi"
         android:focusedByDefault="false"
         android:layout_marginTop="8dp"/>
     <com.google.android.material.button.MaterialButton
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="Refresh"
-        android:layout_below="@id/latti"
+        android:layout_below="@id/longi"
         android:textAllCaps="false"
         android:layout_marginTop="8dp"
         android:id="@+id/refresh"/>
